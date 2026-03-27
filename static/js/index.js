@@ -26,10 +26,10 @@
   }
 
   function initScrollReveal() {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion) return;
 
-    const selectors = [
+    var selectors = [
       '.teaser-block .hero-body',
       '.section .title.is-3',
       '.section .abstract-text',
@@ -44,7 +44,7 @@
       '.section .content'
     ];
 
-    const targets = Array.from(
+    var targets = Array.from(
       new Set(selectors.flatMap(function (selector) {
         return Array.from(document.querySelectorAll(selector));
       }))
@@ -52,38 +52,46 @@
 
     if (!targets.length) return;
 
-    targets.forEach(function (el, index) {
+    var staggerIndex = 0;
+    targets.forEach(function (el) {
       el.classList.add('reveal-item');
-      el.style.setProperty('--reveal-delay', String((index % 5) * 45) + 'ms');
-      const isInitiallyVisible = el.getBoundingClientRect().top <= window.innerHeight * 0.9;
-      if (isInitiallyVisible) {
+      var rect = el.getBoundingClientRect();
+      // Already in viewport on load — keep visible, no animation
+      if (rect.top <= window.innerHeight * 0.92) {
         el.classList.add('reveal-visible');
+      } else {
+        // Below the fold — mark pending so CSS hides it
+        el.style.setProperty('--reveal-delay', String((staggerIndex % 4) * 60) + 'ms');
+        el.classList.add('reveal-pending');
+        staggerIndex++;
       }
     });
 
-    const pending = targets.filter(function (el) {
-      return el.classList.contains('reveal-item') && !el.classList.contains('reveal-visible');
+    var pending = targets.filter(function (el) {
+      return el.classList.contains('reveal-pending');
     });
 
     if (!pending.length) return;
 
     if (!('IntersectionObserver' in window)) {
       pending.forEach(function (el) {
+        el.classList.remove('reveal-pending');
         el.classList.add('reveal-visible');
       });
       return;
     }
 
-    const observer = new IntersectionObserver(function (entries, obs) {
+    var observer = new IntersectionObserver(function (entries, obs) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
+          entry.target.classList.remove('reveal-pending');
           entry.target.classList.add('reveal-visible');
           obs.unobserve(entry.target);
         }
       });
     }, {
-      threshold: 0.08,
-      rootMargin: '0px 0px -8% 0px'
+      threshold: 0.06,
+      rootMargin: '0px 0px -6% 0px'
     });
 
     pending.forEach(function (el) {

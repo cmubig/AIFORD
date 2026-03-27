@@ -4,67 +4,112 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="title" content="Accuracy Isn't Enough: Failure Analysis of Foundation Models in Robotic Decision Making">
-  <meta name="description" content="AIFORD evaluates LLMs and VLMs on safety-critical robotic decision-making tasks, revealing that strong accuracy can mask rare but catastrophic failures.">
-  <meta name="keywords" content="LLM safety, robotics, spatial reasoning, foundation models, failure analysis, safety-critical AI, AIFORD">
+  <!-- Primary SEO -->
+  <title>Before We Trust Them: Decision-Making Failures in Navigation of Foundation Models</title>
+  <meta name="description" content="We evaluate LLMs and VLMs on six diagnostic tasks spanning three settings, revealing that high accuracy can mask critical decision-making failures in navigation-related robotic systems.">
+  <meta name="keywords" content="LLM safety, VLM evaluation, robotics decision making, spatial reasoning, foundation models, failure analysis, navigation, emergency evacuation, GPT-5, Gemini, safety-critical AI, hallucination">
   <meta name="author" content="Jua Han, Jaeyoon Seo, Jungbin Min, Sieun Choi, Huichan Seo, Jihie Kim, Jean Oh">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cmubig.github.io/before-we-trust-them/">
 
+  <!-- Open Graph -->
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Accuracy Isn't Enough: Failure Analysis of Foundation Models in Robotic Decision Making">
-  <meta property="og:description" content="Strong accuracy can mask rare but catastrophic failures in LLM-based robotic decision making.">
-  <meta property="og:image" content="static/images/overall-framework.png">
+  <meta property="og:url" content="https://cmubig.github.io/before-we-trust-them/">
+  <meta property="og:title" content="Before We Trust Them: Decision-Making Failures in Navigation of Foundation Models">
+  <meta property="og:description" content="High success rates on navigation tasks do not guarantee reliable decision making. We identify structural collapse, hallucinated reasoning, constraint violations, and unsafe decisions across GPT-5, Gemini, and open-source models.">
+  <meta property="og:image" content="https://cmubig.github.io/before-we-trust-them/static/images/overall-framework.png">
+  <meta property="og:image:width" content="1600">
+  <meta property="og:image:height" content="623">
+  <meta property="og:site_name" content="CMU Robotics Institute">
+  <meta property="article:published_time" content="2025-01-01">
+  <meta property="article:author" content="Jua Han">
+  <meta property="article:section" content="AI Safety">
+  <meta property="article:tag" content="LLM Safety">
+  <meta property="article:tag" content="Robotics">
+  <meta property="article:tag" content="Spatial Reasoning">
 
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AIFORD: Accuracy Isn't Enough">
-  <meta name="twitter:description" content="Failure analysis of foundation models in robotic decision making.">
-  <meta name="twitter:image" content="static/images/overall-framework.png">
+  <meta name="twitter:title" content="Before We Trust Them: Decision-Making Failures in Navigation of Foundation Models">
+  <meta name="twitter:description" content="GPT-5 achieved 93% on path planning yet still produced invalid paths. Gemini-2.5 Flash scored only 67% on emergency evacuation, underperforming its predecessor.">
+  <meta name="twitter:image" content="https://cmubig.github.io/before-we-trust-them/static/images/overall-framework.png">
+  <meta name="twitter:image:alt" content="Evaluation framework overview showing three diagnostic settings for foundation model navigation assessment">
 
   <meta name="theme-color" content="#1d4ed8">
-  <title>AIFORD: Accuracy Isn't Enough</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
-  <script defer src="static/js/index.js"></script>
-
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
-    "headline": "Accuracy Isn't Enough: Failure Analysis of Foundation Models in Robotic Decision Making",
+    "headline": "Before We Trust Them: Decision-Making Failures in Navigation of Foundation Models",
     "author": [
-      {"@type": "Person", "name": "Jua Han"},
-      {"@type": "Person", "name": "Jaeyoon Seo"},
-      {"@type": "Person", "name": "Jungbin Min"},
-      {"@type": "Person", "name": "Sieun Choi"},
+      {"@type": "Person", "name": "Jua Han", "affiliation": {"@type": "Organization", "name": "Dongguk University"}},
+      {"@type": "Person", "name": "Jaeyoon Seo", "affiliation": {"@type": "Organization", "name": "Dongguk University"}},
+      {"@type": "Person", "name": "Jungbin Min", "affiliation": {"@type": "Organization", "name": "Sungkyunkwan University"}},
+      {"@type": "Person", "name": "Sieun Choi", "affiliation": {"@type": "Organization", "name": "Dongguk University"}},
       {"@type": "Person", "name": "Huichan Seo", "url": "https://huichanseo.com/", "affiliation": {"@type": "Organization", "name": "Carnegie Mellon University"}},
-      {"@type": "Person", "name": "Jihie Kim"},
-      {"@type": "Person", "name": "Jean Oh"}
+      {"@type": "Person", "name": "Jihie Kim", "affiliation": {"@type": "Organization", "name": "Dongguk University"}},
+      {"@type": "Person", "name": "Jean Oh", "url": "https://www.cs.cmu.edu/~jeanoh/", "affiliation": {"@type": "Organization", "name": "Carnegie Mellon University"}}
     ],
+    "publisher": {
+      "@type": "Organization",
+      "name": "Carnegie Mellon University - Robotics Institute"
+    },
+    "datePublished": "2025",
     "inLanguage": "en",
     "isAccessibleForFree": true,
-    "image": "static/images/overall-framework.png",
-    "description": "A diagnostic study evaluating LLMs and VLMs on safety-critical robotic decision-making tasks across complete, incomplete, and safety-oriented spatial reasoning settings."
+    "url": "https://cmubig.github.io/before-we-trust-them/",
+    "image": "https://cmubig.github.io/before-we-trust-them/static/images/overall-framework.png",
+    "description": "A diagnostic study evaluating LLMs and VLMs on six navigation-related decision-making tasks across complete, incomplete, and safety-relevant settings, revealing that strong accuracy can mask critical failures.",
+    "about": [
+      {"@type": "Thing", "name": "Large Language Models"},
+      {"@type": "Thing", "name": "Robotics Safety"},
+      {"@type": "Thing", "name": "Spatial Reasoning"},
+      {"@type": "Thing", "name": "Vision-Language Models"}
+    ]
   }
   </script>
+
+  <!-- Fonts: preconnect + display swap -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <script defer src="static/js/index.js"></script>
+
+  <!-- Noscript fallback -->
+  <noscript>
+    <style>
+      .reveal-item { opacity: 1 !important; transform: none !important; }
+      .scroll-to-top, .resource-fab { display: none !important; }
+    </style>
+  </noscript>
 </head>
 <body>
   <button class="scroll-to-top" id="scrollToTopBtn" aria-label="Scroll to top">&uarr;</button>
 
   <div class="resource-fab">
     <button class="resource-btn" id="resourceToggle" aria-expanded="false" aria-controls="resourceDropdown">Resources</button>
-    <div class="resource-dropdown" id="resourceDropdown">
+    <div class="resource-dropdown" id="resourceDropdown" role="menu">
       <div class="resource-head">
         <h4>Explore Resources</h4>
         <button class="resource-close" id="resourceClose" aria-label="Close resources">&times;</button>
       </div>
-      <a class="resource-item" href="https://github.com/cmubig/AIFORD" target="_blank" rel="noopener">
+      <a class="resource-item" href="https://github.com/cmubig/before-we-trust-them" target="_blank" rel="noopener noreferrer" role="menuitem">
         <div>
-          <strong>Code</strong>
-          <p>Official repository for experiments and project assets.</p>
+          <strong>GitHub Repository</strong>
+          <p>Code, datasets, and project assets.</p>
+        </div>
+        <span>&nearr;</span>
+      </a>
+      <a class="resource-item" href="https://cmubig.github.io/before-we-trust-them/" role="menuitem">
+        <div>
+          <strong>Project Page</strong>
+          <p>Interactive overview with all results and figures.</p>
         </div>
         <span>&nearr;</span>
       </a>
@@ -72,27 +117,28 @@
   </div>
 
   <main>
-    <section class="hero hero-main">
+    <!-- Hero -->
+    <section class="hero hero-main" itemscope itemtype="https://schema.org/ScholarlyArticle">
       <div class="hero-body">
         <div class="container is-max-desktop has-text-centered">
           <span class="badge-track">Safety-Critical AI for Robotics</span>
-          <h1 class="title page-title">Accuracy Isn't Enough: Failure Analysis of Foundation Models in Robotic Decision Making</h1>
-          <p class="subtitle page-subtitle">Strong accuracy can mask rare but catastrophic failures. We evaluate whether modern LLMs and VLMs can be trusted for safety-critical spatial decisions in robotic systems.</p>
+          <h1 class="title page-title" itemprop="headline">Before We Trust Them: Decision-Making Failures in Navigation of Foundation Models</h1>
+          <p class="subtitle page-subtitle" itemprop="description">High success rates on navigation-related tasks do not necessarily translate into reliable decision making. We evaluate whether modern LLMs and VLMs can be trusted for safety-critical spatial decisions.</p>
 
-          <div class="authors is-size-5">
-            <a href="https://scholar.google.com/citations?user=fSt75d4AAAAJ&hl=ko" target="_blank" rel="noopener noreferrer">Jua Han<sup>1*</sup></a>
-            <a href="https://scholar.google.com/citations?user=jOlDzJkAAAAJ&hl=ko" target="_blank" rel="noopener noreferrer">Jaeyoon Seo<sup>1*</sup></a>
-            <a href="https://www.semanticscholar.org/author/Jungbin-Min/2403936845" target="_blank" rel="noopener noreferrer">Jungbin Min<sup>2*</sup></a>
-            <a href="https://linkedin.com/in/sieunchoi/" target="_blank" rel="noopener noreferrer">Sieun Choi<sup>1</sup></a>
-            <a href="https://huichanseo.com/" target="_blank" rel="noopener noreferrer">Huichan Seo<sup>3</sup></a>
-            <a href="https://sites.google.com/view/jihiekim/" target="_blank" rel="noopener noreferrer">Jihie Kim<sup>1</sup></a>
-            <a href="https://www.cs.cmu.edu/~jeanoh/" target="_blank" rel="noopener noreferrer">Jean Oh<sup>3</sup></a>
+          <div class="authors is-size-5" aria-label="Paper authors">
+            <a href="https://scholar.google.com/citations?user=fSt75d4AAAAJ&hl=ko" target="_blank" rel="noopener noreferrer"><span itemprop="author">Jua Han</span><sup>1*</sup></a>
+            <a href="https://scholar.google.com/citations?user=jOlDzJkAAAAJ&hl=ko" target="_blank" rel="noopener noreferrer"><span itemprop="author">Jaeyoon Seo</span><sup>1*</sup></a>
+            <a href="https://www.semanticscholar.org/author/Jungbin-Min/2403936845" target="_blank" rel="noopener noreferrer"><span itemprop="author">Jungbin Min</span><sup>2*</sup></a>
+            <a href="https://linkedin.com/in/sieunchoi/" target="_blank" rel="noopener noreferrer"><span itemprop="author">Sieun Choi</span><sup>1</sup></a>
+            <a href="https://huichanseo.com/" target="_blank" rel="noopener noreferrer"><span itemprop="author">Huichan Seo</span><sup>3</sup></a>
+            <a href="https://sites.google.com/view/jihiekim/" target="_blank" rel="noopener noreferrer"><span itemprop="author">Jihie Kim</span><sup>1</sup></a>
+            <a href="https://www.cs.cmu.edu/~jeanoh/" target="_blank" rel="noopener noreferrer"><span itemprop="author">Jean Oh</span><sup>3</sup></a>
           </div>
           <p class="affils is-size-6"><sup>1</sup>Dongguk University &middot; <sup>2</sup>Sungkyunkwan University &middot; <sup>3</sup>Carnegie Mellon University</p>
           <p class="equal-note"><sup>*</sup>Equal contribution</p>
 
           <div class="cta-row">
-            <a class="button is-dark is-rounded" href="https://github.com/cmubig/AIFORD" target="_blank" rel="noopener">GitHub</a>
+            <a class="button is-dark is-rounded" href="https://github.com/cmubig/before-we-trust-them" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a class="button is-light is-rounded" href="#results">Key Results</a>
             <a class="button is-light is-rounded" href="#bibtex">BibTeX</a>
           </div>
@@ -100,14 +146,15 @@
       </div>
     </section>
 
-    <section class="quick-nav-wrap">
+    <!-- Quick Navigation -->
+    <section class="quick-nav-wrap" aria-label="Page navigation">
       <div class="container is-max-desktop">
         <nav class="quick-nav" aria-label="Section navigation" tabindex="0">
           <a href="#abstract">Abstract</a>
           <a href="#framework">Framework</a>
           <a href="#results">Results</a>
-          <a href="#sequence">Sequence</a>
-          <a href="#sosr">SOSR</a>
+          <a href="#sequence">Egocentric</a>
+          <a href="#safety">Safety</a>
           <a href="#bob">BoB</a>
           <a href="#discussion">Discussion</a>
           <a href="#takeaways">Takeaways</a>
@@ -116,173 +163,183 @@
       </div>
     </section>
 
+    <!-- Teaser Figure -->
     <section class="hero teaser-block">
       <div class="container is-max-desktop">
         <div class="hero-body">
           <figure class="image">
-            <img src="static/images/abstract-figure.png" alt="In a fire scenario, LLMs direct users to important documents or a server room instead of a safe exit" loading="lazy">
+            <img src="static/images/abstract-figure.png" alt="In an emergency-evacuation task, Gemini-2.5 Flash directs users to important documents (32%) or a server room (1%) instead of the exit" width="1600" height="571" decoding="async" fetchpriority="high">
           </figure>
-          <p class="teaser-caption">In a simulated fire scenario, LLMs directed users toward important documents (32%) or a hallucinated server room (1%) instead of the emergency exit.</p>
+          <p class="teaser-caption">In an emergency-evacuation task, Gemini-2.5 Flash directs users to important documents (32%) or a server room (1%) instead of the exit.</p>
         </div>
       </div>
     </section>
 
-    <section class="section section-paper metric-section">
+    <!-- Key Metrics -->
+    <section class="section section-paper metric-section" aria-label="Key statistics">
       <div class="container is-max-desktop">
         <div class="metric-grid">
+          <article class="metric-card">
+            <p class="metric-value">93%</p>
+            <p>GPT-5 on unknown-cell maps&mdash;yet the remaining 7% still included invalid paths with constraint violations.</p>
+          </article>
+          <article class="metric-card">
+            <p class="metric-value">67%</p>
+            <p>Gemini-2.5 Flash on hard emergency evacuation, underperforming Gemini-2.0 Flash which reached 100%.</p>
+          </article>
           <article class="metric-card">
             <p class="metric-value">32%</p>
             <p>Hard emergency prompts where Gemini-2.5 Flash prioritized document retrieval over evacuation.</p>
           </article>
-          <article class="metric-card">
-            <p class="metric-value">0%</p>
-            <p>Success rate observed for multiple models on map tasks as spatial complexity increased.</p>
-          </article>
-          <article class="metric-card">
-            <p class="metric-value">1%</p>
-            <p>Runs where a hallucinated server-room route was suggested during fire-evacuation decision making.</p>
-          </article>
         </div>
       </div>
     </section>
 
+    <!-- Abstract -->
     <section class="section section-paper" id="abstract">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column is-four-fifths">
             <h2 class="title is-3 has-text-centered">Abstract</h2>
             <p class="abstract-text">
-              Using large language models (LLMs) and vision-language models (VLMs) for robotic decision making raises a fundamental safety question: can these models remain reliable when spatial reasoning errors lead directly to unsafe actions? To investigate this question, we evaluate current models on seven diagnostic tasks spanning three settings: Complete Information, Incomplete Information, and Safety-Oriented Spatial Reasoning (SOSR). Our results reveal a clear gap between overall performance and safety reliability. GPT-5 achieved 100% success on complete map tasks but still dropped to 93.3% on a uncertain-terrain setting and produced explicitly invalid moves. In SOSR, Gemini-2.5 Flash achieved only 67% on the hard emergency-escape task, underperforming Gemini-2.0 Flash, which reached 100% on the same condition. Across settings, models exhibited structural collapse, hallucinated reasoning, constraint violations, and unsafe decisions. These findings show that strong average accuracy can obscure rare but safety-critical failures, motivating failure-focused evaluation before deploying foundation models in safety-critical robotic systems.
+              High success rates on navigation-related tasks do not necessarily translate into reliable decision making by foundation models. To examine this gap, we evaluate current models on <strong>six diagnostic tasks</strong> spanning <strong>three settings</strong>: reasoning under complete spatial information, reasoning under incomplete spatial information, and reasoning under safety-relevant information. Our results show that important decision-making failures can persist even when overall performance is strong, underscoring the need for failure-focused analysis to understand model limitations and guide future progress. In a path-planning setting with unknown cells, <strong>GPT-5 achieved a high success rate of 93%</strong>, yet the remaining cases still included invalid paths. We also find that <strong>newer models are not always more reliable</strong> than their predecessors. In reasoning under safety-relevant information, <strong>Gemini-2.5 Flash achieved only 67%</strong> on the challenging emergency-evacuation task, underperforming Gemini-2.0 Flash, which reached 100% under the same condition. Across all evaluations, models exhibited structural collapse, hallucinated reasoning, constraint violations, and unsafe decisions. These findings show that foundation models still exhibit substantial failures in navigation-related decision making and require fine-grained evaluation before they can be trusted.
             </p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Evaluation Framework -->
     <section class="section section-panel" id="framework">
       <div class="container is-max-widescreen">
         <h2 class="title is-3 has-text-centered">Evaluation Framework</h2>
         <div class="card-panel">
           <figure class="image">
-            <img src="static/images/overall-framework.png" alt="Overview of benchmark tasks and input formats across Complete Information, Incomplete Information, and SOSR settings" loading="lazy">
+            <img src="static/images/overall-framework.png" alt="Overview of three evaluation settings: reasoning under complete spatial information using ASCII maps, reasoning under incomplete spatial information using unknown cells and egocentric sequences, and reasoning under safety-relevant information using orientation tracking and emergency evacuation" width="1600" height="623" decoding="async" loading="lazy">
           </figure>
-          <p class="figure-note">Overview of the benchmark tasks and input formats. The figure summarizes three task categories: Complete Information, Incomplete Information, and Safety-Oriented Spatial Reasoning (SOSR), with corresponding input formats including deterministic and uncertain ASCII maps, image-sequence reasoning tasks, and natural-language decision-making scenarios.</p>
+          <p class="figure-note">Overview of the three evaluation settings and representative input formats. The figure summarizes reasoning under complete spatial information, reasoning under incomplete spatial information, and reasoning under safety-relevant information. In the prompts for reasoning under safety-relevant information, red text indicates phrases related to task difficulty, and blue text indicates important contextual clues.</p>
         </div>
       </div>
     </section>
 
+    <!-- Core Contributions -->
     <section class="section section-paper" id="contributions">
       <div class="container is-max-widescreen">
         <h2 class="title is-3 has-text-centered">Core Contributions</h2>
         <div class="columns is-multiline is-variable is-5">
           <div class="column is-half-tablet is-one-quarter-desktop">
-            <div class="contrib-card">
-              <h3>Seven Diagnostic Tasks</h3>
-              <p>Complete maps, uncertain maps, sequence inference, and SOSR emergency prompts across three evaluation settings.</p>
-            </div>
+            <article class="contrib-card">
+              <h3>Six Diagnostic Tasks</h3>
+              <p>Fine-grained evaluation of navigation-related decision making under complete, incomplete, and safety-relevant information.</p>
+            </article>
           </div>
           <div class="column is-half-tablet is-one-quarter-desktop">
-            <div class="contrib-card">
-              <h3>Persistent Failure Modes</h3>
-              <p>We identify unstable spatial grounding, structural breakdown, hallucinated reasoning, constraint violations, and unsafe choices.</p>
-            </div>
+            <article class="contrib-card">
+              <h3>Recurring Failure Modes</h3>
+              <p>Unstable spatial grounding, structural breakdown, hallucinated reasoning, explicit constraint violations, and unsafe choices in emergency scenarios.</p>
+            </article>
           </div>
           <div class="column is-half-tablet is-one-quarter-desktop">
-            <div class="contrib-card">
-              <h3>Safety-Alignment Drift</h3>
-              <p>Newer model versions do not always preserve safety-aligned behavior, with Gemini-2.5 Flash underperforming its predecessor.</p>
-            </div>
+            <article class="contrib-card">
+              <h3>Newer Is Not Always Safer</h3>
+              <p>Newer model versions do not consistently preserve safety-aligned behavior&mdash;Gemini-2.5 Flash underperformed Gemini-2.0 Flash on emergency evacuation.</p>
+            </article>
           </div>
           <div class="column is-half-tablet is-one-quarter-desktop">
-            <div class="contrib-card">
+            <article class="contrib-card">
               <h3>Beyond Aggregate Accuracy</h3>
-              <p>We show that strong average performance can still mask rare but safety-critical failures in robotic systems.</p>
-            </div>
+              <p>Strong performance does not guarantee reliable decision making&mdash;failure-focused analysis is essential before foundation models can be trusted.</p>
+            </article>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Main Quantitative Results -->
     <section class="section section-panel" id="results">
       <div class="container is-max-widescreen">
         <h2 class="title is-3 has-text-centered">Main Quantitative Results</h2>
-        <div class="table-wrap" tabindex="0" aria-label="Scrollable results table">
+        <div class="table-wrap" tabindex="0" aria-label="Scrollable results table" role="region">
           <table class="table is-fullwidth result-table">
+            <caption class="is-sr-only">Success rates (%) of LLMs across map-based tasks and reasoning under safety-relevant information tasks. Each model tested 100 times per task.</caption>
             <thead>
               <tr>
-                <th>Task</th>
-                <th>Gemini-2.5 Flash</th>
-                <th>Gemini-2.0 Flash</th>
-                <th>GPT-5</th>
-                <th>GPT-4o</th>
-                <th>LLaMA-3-8b</th>
+                <th scope="col">Task</th>
+                <th scope="col">Gemini-2.5 Flash</th>
+                <th scope="col">Gemini-2.0 Flash</th>
+                <th scope="col">GPT-5</th>
+                <th scope="col">GPT-4o</th>
+                <th scope="col">Llama-3-8b</th>
               </tr>
             </thead>
             <tbody>
               <tr class="group-row"><td colspan="6">Map-Based Task (Success rate %)</td></tr>
-              <tr><td>Complete - Easy</td><td>66.7</td><td>100</td><td>100</td><td>80</td><td>0</td></tr>
-              <tr><td>Complete - Normal</td><td>93.3</td><td>0</td><td>100</td><td>0</td><td>0</td></tr>
-              <tr><td>Complete - Hard</td><td>73.3</td><td>0</td><td>100</td><td>0</td><td>0</td></tr>
-              <tr><td>Incomplete - Uncertain - Map #1</td><td>90.0</td><td>0</td><td>100</td><td>0</td><td>0</td></tr>
-              <tr><td>Incomplete - Uncertain - Map #2</td><td>56.7</td><td>0</td><td>93.3</td><td>0</td><td>0</td></tr>
-              <tr class="group-row"><td colspan="6">SOSR Task</td></tr>
-              <tr><td>Direction Following - Easy</td><td>98</td><td>99</td><td>98</td><td>94</td><td>7</td></tr>
-              <tr><td>Direction Following - Normal</td><td>100</td><td>72</td><td>82</td><td>66</td><td>12</td></tr>
-              <tr><td>Direction Following - Hard</td><td>100</td><td>42</td><td>100</td><td>53</td><td>51</td></tr>
-              <tr><td>Emergency Escape - Easy</td><td>100</td><td>100</td><td>100</td><td>100</td><td>100</td></tr>
-              <tr><td>Emergency Escape - Hard</td><td>67</td><td>100</td><td>100</td><td>98</td><td>46</td></tr>
+              <tr><td>Complete (Easy)</td><td>66</td><td>100</td><td>100</td><td>80</td><td>0</td></tr>
+              <tr><td>Complete (Normal)</td><td>93</td><td>0</td><td>100</td><td>0</td><td>0</td></tr>
+              <tr><td>Complete (Hard)</td><td>73</td><td>0</td><td>100</td><td>0</td><td>0</td></tr>
+              <tr><td>Unknown &mdash; Map 1</td><td>90</td><td>0</td><td>100</td><td>0</td><td>0</td></tr>
+              <tr><td>Unknown &mdash; Map 2</td><td>56</td><td>0</td><td>93</td><td>0</td><td>0</td></tr>
+              <tr class="group-row"><td colspan="6">Reasoning under Safety-Relevant Information</td></tr>
+              <tr><td>Orientation-Tracking (Easy)</td><td>98</td><td>99</td><td>98</td><td>94</td><td>7</td></tr>
+              <tr><td>Orientation-Tracking (Normal)</td><td>100</td><td>72</td><td>82</td><td>66</td><td>12</td></tr>
+              <tr><td>Orientation-Tracking (Hard)</td><td>100</td><td>42</td><td>100</td><td>53</td><td>51</td></tr>
+              <tr><td>Emergency Evacuation (Easy)</td><td>100</td><td>100</td><td>100</td><td>100</td><td>100</td></tr>
+              <tr><td>Emergency Evacuation (Hard)</td><td>67</td><td>100</td><td>100</td><td>98</td><td>46</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="table-hint">Mobile tip: swipe this table horizontally to see all model columns.</p>
+        <p class="table-hint">Each model tested 100 times per task. Temperature and top-p set to 1.</p>
       </div>
     </section>
 
-    <section class="section section-paper">
+    <!-- Complete + Unknown Map Analysis -->
+    <section class="section section-paper" id="map-analysis">
       <div class="container is-max-widescreen">
         <div class="columns is-variable is-6 is-vcentered">
           <div class="column is-6">
             <figure class="image framed-figure">
-              <img src="static/images/deterministic-results.png" alt="Success rates of LLMs on deterministic and uncertain ASCII map tasks" loading="lazy">
+              <img src="static/images/deterministic-results.png" alt="Dot plot showing success rates of five LLMs across Easy, Normal, Hard complete maps and two unknown-cell maps" width="1600" height="649" decoding="async" loading="lazy">
             </figure>
           </div>
           <div class="column is-6">
-            <h2 class="title is-3">Complete + Uncertain Map Tasks</h2>
-            <p>GPT-5 remains the most stable performer across deterministic and uncertain terrain maps. In contrast, Gemini-2.0 Flash and GPT-4o exhibit abrupt collapse as complexity increases, and LLaMA-3-8b fails to preserve map structure entirely.</p>
-            <p class="mt-3">This pattern reveals a key reliability issue: degradation is often non-gradual and can shift from near-success to total failure under small increases in spatial complexity.</p>
+            <h2 class="title is-3">Complete + Unknown Map Tasks</h2>
+            <p>GPT-5 achieved 100% success across all complete maps and remained the most stable performer on unknown-cell maps. Gemini-2.0 Flash and GPT-4o exhibited abrupt collapse once map complexity increased&mdash;dropping from 100% and 80% on Easy to 0% on Normal and Hard.</p>
+            <p class="mt-3">This pattern reveals that degradation is often non-gradual, shifting from near-success to total failure under small increases in spatial complexity.</p>
           </div>
         </div>
         <div class="columns is-variable is-6 is-vcentered mt-5">
           <div class="column is-6">
-            <h2 class="title is-3">Structural Collapse Case</h2>
-            <p>Representative outputs show severe map breakdown for smaller open-source models, including malformed grids and incoherent path tokens. These failures are not merely low scores: they are unusable plans for embodied execution.</p>
+            <h2 class="title is-3">Structural Integrity Failure</h2>
+            <p>Llama-3-8b achieved 0% across all maps. It not only failed to produce continuous paths, but used invalid symbols and failed to preserve the input map structure itself&mdash;producing collapsed, disorganized outputs. These failures indicate severe breakdown in structural preservation, not simple path-planning errors.</p>
           </div>
           <div class="column is-6">
             <figure class="image framed-figure">
-              <img src="static/images/llama-collapse.png" alt="Collapsed map structures generated by LLaMA-3-8b" loading="lazy">
+              <img src="static/images/llama-collapse.png" alt="Side-by-side comparison: red boxes show Llama-3-8b collapsed map outputs with invalid paths, green boxes show correct answers with valid continuous paths" width="1600" height="608" decoding="async" loading="lazy">
             </figure>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Egocentric Sequence Reasoning -->
     <section class="section section-panel" id="sequence">
       <div class="container is-max-widescreen">
-        <h2 class="title is-3 has-text-centered">Sequence-Based Reasoning Task</h2>
+        <h2 class="title is-3 has-text-centered">Egocentric Sequence Reasoning</h2>
         <div class="columns is-variable is-6">
           <div class="column is-6">
-            <p>We evaluate incomplete-information reasoning using 100 short egocentric image sequences depicting indoor and outdoor navigation trajectories. Two complementary tasks are tested:</p>
+            <p>We evaluate reasoning under incomplete spatial information using 100 short egocentric image sequences from indoor and outdoor navigation trajectories. Two complementary tasks are tested:</p>
             <ul style="margin-top:0.8rem; color:#334155;">
-              <li><strong>Sequence Validation:</strong> Infer the turning direction from an ordered 5-frame sequence.</li>
-              <li><strong>Sequence Masking:</strong> Select the missing frame from two visually similar candidates.</li>
+              <li><strong>Turn-Direction Inference:</strong> Infer the turning direction from an ordered 5-frame sequence.</li>
+              <li><strong>Missing-Frame Selection:</strong> Select the correct missing intermediate frame from two visually similar candidates.</li>
             </ul>
             <p class="mt-3">Models span API-based (Gemini, GPT) and open-source (LLaVA, Qwen, InternVL) families, from 3B to 14B parameters.</p>
           </div>
           <div class="column is-6">
-            <div class="table-wrap" tabindex="0">
+            <div class="table-wrap" tabindex="0" role="region" aria-label="Egocentric sequence results table">
               <table class="table is-fullwidth result-table" style="min-width:auto;">
+                <caption class="is-sr-only">Success rates (%) of the egocentric sequence reasoning task.</caption>
                 <thead>
-                  <tr><th>Model</th><th>Validation</th><th>Masking</th></tr>
+                  <tr><th scope="col">Model</th><th scope="col">Turn</th><th scope="col">Missing</th></tr>
                 </thead>
                 <tbody>
                   <tr class="group-row"><td colspan="3">API Models</td></tr>
@@ -290,11 +347,11 @@
                   <tr><td>Gemini-2.0 Flash</td><td>53%</td><td>12%</td></tr>
                   <tr><td>GPT-5</td><td>64%</td><td>92%</td></tr>
                   <tr><td>GPT-4o</td><td>50%</td><td>54%</td></tr>
-                  <tr class="group-row"><td colspan="3">Open-source Models</td></tr>
-                  <tr><td>LLaVA-v1.6-vicuna-13b</td><td>37%</td><td>24%</td></tr>
-                  <tr><td>LLaVA-v1.6-vicuna-7b</td><td>39%</td><td>23%</td></tr>
-                  <tr><td>LLaVA-v1.6-mistral-7b</td><td>39%</td><td>59%</td></tr>
-                  <tr><td>LLaVA-v1.5-7b</td><td>48%</td><td>10%</td></tr>
+                  <tr class="group-row"><td colspan="3">Open-Source Models</td></tr>
+                  <tr><td>LLaVA-v1.6-vicuna-13B</td><td>37%</td><td>24%</td></tr>
+                  <tr><td>LLaVA-v1.6-vicuna-7B</td><td>39%</td><td>23%</td></tr>
+                  <tr><td>LLaVA-v1.6-mistral-7B</td><td>39%</td><td>59%</td></tr>
+                  <tr><td>LLaVA-v1.5-7B</td><td>48%</td><td>10%</td></tr>
                   <tr><td>Qwen2.5-VL-7B-Instruct</td><td>52%</td><td>52%</td></tr>
                   <tr><td>Qwen2.5-VL-3B-Instruct</td><td>44%</td><td>54%</td></tr>
                   <tr><td>Qwen2.5-Omni-7B</td><td>52%</td><td>58%</td></tr>
@@ -306,144 +363,142 @@
         </div>
         <div class="columns is-variable is-6 mt-4">
           <div class="column is-half">
-            <div class="contrib-card">
-              <h3>Sycophantic Bias in Validation</h3>
-              <p>Models exhibited a strong bias toward answering "right" regardless of the actual turning direction, resulting in accuracy rates mostly around 40&ndash;60%. This may be attributed to sycophantic behavior, where "right" conveys affirmative meaning and models favor it over more neutral options.</p>
-            </div>
+            <article class="contrib-card">
+              <h3>Sycophantic Bias in Turn-Direction Inference</h3>
+              <p>Models exhibited a strong bias toward answering &ldquo;right&rdquo; regardless of the actual turning direction, resulting in accuracy rates mostly around 40&ndash;60%. Because &ldquo;right&rdquo; often carries an affirmative meaning, models may have favored it over more neutral alternatives.</p>
+            </article>
           </div>
           <div class="column is-half">
-            <div class="contrib-card">
-              <h3>Hallucination in Masking</h3>
-              <p>Most models' accuracy was close to random, indicating failure to grasp spatial context. Hallucinated cases included inventing nonexistent options like "(C)" or "(J)", incorrectly judging temporal continuity, or refusing to answer altogether.</p>
-            </div>
+            <article class="contrib-card">
+              <h3>Hallucination in Missing-Frame Selection</h3>
+              <p>Most models&rsquo; accuracy was close to random, suggesting failure to grasp spatial context. Hallucinated cases included inventing nonexistent options like &ldquo;(C)&rdquo; or &ldquo;(J)&rdquo;, incorrectly judging temporal continuity, or refusing to answer altogether.</p>
+            </article>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Path Planning with Unknown Cells -->
     <section class="section section-paper" id="uncertain-detail">
       <div class="container is-max-widescreen">
-        <h2 class="title is-3 has-text-centered">Uncertain Terrain: Detailed Analysis</h2>
+        <h2 class="title is-3 has-text-centered">Path Planning with Unknown Cells: Detailed Analysis</h2>
         <div class="columns is-variable is-6">
           <div class="column is-6">
-            <div class="contrib-card">
-              <h3>Constraint-Aware Reasoning (GPT-5)</h3>
-              <p>GPT-5 achieved 100% on Uncertain Map #1 and 93.3% on Map #2. In all Map #1 trials, it explicitly stated "I assume that unknown terrain (?) is not passable," demonstrating a stable safety-first bias. When the goal became unreachable under this assumption, GPT-5 correctly responded "No path exists" in 26.7% of runs.</p>
-              <p class="mt-3">However, two Map #2 failures (6.7%) involved <strong>diagonal movement</strong>&mdash;an explicitly prohibited action. This emphasizes: <strong>high accuracy does not imply safety</strong>.</p>
-            </div>
+            <article class="contrib-card">
+              <h3>Constraint-Aware Reasoning and Safe Adaptation (GPT-5)</h3>
+              <p>GPT-5 achieved 100% on Unknown Map 1 and 93% on Map 2. In all Map 1 trials, it explicitly stated &ldquo;I assume that unknown cells ? is not passable,&rdquo; demonstrating a stable safety-first bias. When the goal became unreachable under this assumption in Map 2, GPT-5 correctly responded &ldquo;No path exists under this assumption&rdquo; in 27% of runs.</p>
+              <p class="mt-3">However, two Map 2 failures (7%) involved <strong>diagonal movement</strong>&mdash;an explicitly prohibited action. This highlights a critical insight: <strong>high accuracy does not imply safety</strong>. In practical robotic settings, such violations may directly lead to unsafe or physically infeasible behaviors.</p>
+            </article>
           </div>
           <div class="column is-6">
-            <div class="contrib-card">
+            <article class="contrib-card">
               <h3>Partial Alignment, Fragile Consistency</h3>
-              <p>Gemini-2.5 Flash adopted the "not passable" assumption in 97% of Map #1 runs, but its success rate dropped to 57% on Map #2, with frequent failures such as obstacle traversal and map collapse.</p>
-              <p class="mt-3">These results indicate that although the model could <strong>imitate safety-oriented reasoning</strong>, it failed to maintain constraint consistency once uncertainty was introduced. LLaMA-3-8b showed the same collapse pattern, failing entirely on uncertain terrain maps.</p>
-            </div>
+              <p>Gemini-2.5 Flash adopted the &ldquo;not passable&rdquo; assumption in 97% of Map 1 runs, but its success rate dropped to 57% on Map 2, with frequent failures such as obstacle traversal and map collapse.</p>
+              <p class="mt-3">These results indicate that although the model could <strong>imitate safety-oriented reasoning</strong>, it failed to maintain constraint consistency once uncertainty was introduced. Llama-3-8b showed the same collapse pattern, failing entirely on maps with unknown cells.</p>
+            </article>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section section-panel" id="sosr">
+    <!-- Safety-Relevant Information -->
+    <section class="section section-panel" id="safety">
       <div class="container is-max-widescreen">
-        <h2 class="title is-3 has-text-centered">SOSR: Safety-Critical Behavior Under Natural Language</h2>
+        <h2 class="title is-3 has-text-centered">Reasoning under Safety-Relevant Information</h2>
         <div class="columns is-variable is-5">
           <div class="column is-half">
             <div class="card-panel">
               <figure class="image">
-                <img src="static/images/sosr-radar.png" alt="Radar chart comparing SOSR task scores across models" loading="lazy">
+                <img src="static/images/sosr-radar.png" alt="Radar chart showing model performance: GPT-5 and Gemini-2.5 Flash lead on orientation tracking while Gemini-2.0 Flash leads on emergency evacuation" width="528" height="453" decoding="async" loading="lazy">
               </figure>
-              <p class="figure-note">Radar summary of model performance across SOSR difficulty levels and emergency decision tasks.</p>
+              <p class="figure-note">Radar summary of model performance across orientation-tracking difficulty levels and emergency evacuation tasks.</p>
             </div>
           </div>
           <div class="column is-half">
             <div class="card-panel">
               <figure class="image">
-                <img src="static/images/emergency-response.png" alt="Response frequencies of Gemini-2.5 Flash for the emergency escape task" loading="lazy">
+                <img src="static/images/emergency-response.png" alt="Pie chart: Gemini-2.5 Flash emergency evacuation responses showing 67% exit, 32% professor office, 1% server room" width="1600" height="618" decoding="async" loading="lazy">
               </figure>
-              <p class="figure-note">Response frequencies of Gemini-2.5 Flash for the emergency escape task (hard difficulty). Unsafe prioritization appears in a non-trivial fraction of responses.</p>
+              <p class="figure-note">Response rate of Gemini-2.5 Flash on the hard emergency-evacuation task. The model directs users to the professor&rsquo;s office (32%) or server room (1%) instead of the emergency exit.</p>
             </div>
           </div>
         </div>
         <div class="columns is-variable is-5 mt-3">
           <div class="column is-5">
-            <h3 class="title is-4">Critical Failure Examples</h3>
-            <p>In the emergency escape experiment, Gemini-2.5 Flash directed users toward the professor's office in 32% of trials, prioritizing document retrieval over evacuation. In 1% of trials, the model instructed users to head to the server room&mdash;a location never mentioned in the prompt.</p>
-            <p class="mt-3">The latest LLMs do not always guarantee superior performance over their predecessors. On the hard emergency escape task, Gemini-2.5 Flash's performance was 40% lower than Gemini-2.0 Flash, suggesting that post-training adaptation may introduce <strong>safety-alignment drift</strong>. In contrast, GPT-4o refused to respond to life-and-safety-related prompts entirely, while Gemini-2.5 Flash produced confident yet hazardous responses.</p>
+            <h3 class="title is-4">Critical Failure Rate</h3>
+            <p>In the emergency-evacuation experiment, Gemini-2.5 Flash directed users toward the professor&rsquo;s office in 32% of trials, prioritizing document retrieval over evacuation. In 1% of trials, the model instructed users to head to the server room&mdash;a location never mentioned in the prompt. This hallucinated reasoning may further increase potential risk, as the server room is itself a high-risk area with potential explosion hazards.</p>
+            <p class="mt-3">The latest LLMs do not always exhibit superior performance over their predecessors. On the hard emergency-evacuation task, Gemini-2.5 Flash performed 40% worse than Gemini-2.0 Flash, suggesting that post-training adaptation may introduce <strong>safety-alignment drift</strong>, whereby capabilities reinforced during later optimization do not consistently preserve previously learned safety-relevant behavior. In contrast, GPT-4o refused to respond to safety-critical prompts, while Gemini-2.5 Flash produced confident yet hazardous responses.</p>
           </div>
           <div class="column is-7">
             <figure class="image framed-figure">
-              <img src="static/images/abstract-figure.png" alt="Fire evacuation scenario failure cases" loading="lazy">
+              <img src="static/images/abstract-figure.png" alt="Emergency evacuation task diagram: fire scenario where Gemini-2.5 Flash suggests professor office or server room instead of exit" width="1600" height="571" decoding="async" loading="lazy">
             </figure>
-            <p class="mini-note">Fire evacuation scenario: models suggest unsafe destinations instead of immediate evacuation, revealing failures in safety prioritization and contextual grounding.</p>
-          </div>
-        </div>
-        <div class="columns is-variable is-5 mt-4">
-          <div class="column">
-            <div class="contrib-card">
-              <h3>Prompt Length Does Not Determine Performance</h3>
-              <p>Longer prompts do not necessarily lead to degradation. Gemini-2.5 Flash performed 2% worse on the "easy" level than on "normal" in the direction task. Similarly, GPT-5 performed 18% worse on "normal" than on "hard." Since each difficulty level added only one or two sentences, increased prompt length alone does not reduce model performance.</p>
-            </div>
+            <p class="mini-note">Emergency-evacuation scenario: Gemini-2.5 Flash suggests unsafe destinations instead of immediate evacuation, revealing failures in safety prioritization and contextual grounding.</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Back-of-the-Building (Supplementary) -->
     <section class="section section-paper" id="bob">
       <div class="container is-max-widescreen">
-        <h2 class="title is-3 has-text-centered">Back of the Building (BoB) Failure Analysis</h2>
+        <h2 class="title is-3 has-text-centered">Supplementary: Back-of-the-Building Task</h2>
         <div class="columns is-variable is-6 is-vcentered">
           <div class="column is-6">
             <figure class="image framed-figure">
-              <img src="static/images/bob-failure-types.png" alt="Representative failure types in the Back of the Building task" loading="lazy">
+              <img src="static/images/bob-failure-types.png" alt="Four failure types: (a) structural collapse with missing topology, (b) directional error failing to reach building rear, (c) constraint violation with path intersecting obstacles, (d) waypoint error at transition points" width="1600" height="321" decoding="async" loading="lazy">
             </figure>
           </div>
           <div class="column is-6">
-            <p>We tested <strong>GPT-4o</strong>, <strong>Claude Opus 4.1</strong>, and <strong>Claude Sonnet 4</strong> with an identical instruction: "Navigate the robot to the back of the building." The task required inferring the robot's position, mentally transforming a first-person viewpoint into a top-down layout, and generating a coherent navigation map.</p>
-            <p class="mt-3">All tested models exhibited <strong>limited capability in establishing stable spatial correspondences</strong> between the visual scene and the generated map. Common failures include: (a) structural collapse, (b) directional errors, (c) constraint violations, and (d) waypoint misuse.</p>
-            <p class="mt-3">Even when textual reasoning looks plausible, geometric grounding frequently breaks, revealing an unresolved gap between language competence and actionable spatial planning.</p>
+            <p>We tested <strong>GPT-4o</strong>, <strong>Claude Opus 4.1</strong>, and <strong>Claude Sonnet 4</strong> with an identical instruction: &ldquo;Navigate the robot to the back of the building.&rdquo; The task required inferring the robot&rsquo;s position within the scene, transforming a first-person viewpoint into a top-down layout, and generating a coherent map that links visual perception with spatial reasoning.</p>
+            <p class="mt-3">The tested models showed <strong>limited ability to establish stable spatial correspondences</strong> between the visual scene and the generated map. Most produced partially plausible layouts but failed to consistently identify the correct orientation, preserve the structural integrity of the building, or maintain feasible trajectories.</p>
+            <p class="mt-3">As shown in the figure, these results indicate recurring breakdowns in visual&ndash;spatial grounding and constraint adherence: (a) structural collapse, (b) directional error, (c) constraint violation, and (d) waypoint error.</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Discussion -->
     <section class="section section-paper" id="discussion">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column is-four-fifths">
             <h2 class="title is-3 has-text-centered">Discussion</h2>
-            <p>Our results show that strong performance under standard conditions does not necessarily translate into reliable robotic decision making. Several models performed well when spatial structure was explicit and constraints were clear, but became less dependable when reasoning required preserving map structure, inferring from incomplete information, or resolving context-dependent priorities.</p>
-            <p class="mt-3">Failures appeared not only as incorrect answers, but also as structural collapse, hallucinated reasoning, explicit constraint violations, and unsafe choices in emergency scenarios. Rather than viewing these models as autonomous decision makers, it is more appropriate to regard them as <strong>assistive components whose outputs require verification</strong>, especially when tasks involve uncertainty, incomplete evidence, or high-stakes context.</p>
+            <p>Our findings indicate a clear gap between overall task performance and reliable robotic decision making. Models were often competent when spatial structure was explicit and constraints were easy to satisfy, yet this competence did not consistently carry over to settings that required inference from incomplete context, stable visual&ndash;spatial grounding, or prioritization of safety under competing cues. The transition from <em>solving the task</em> to <em>solving it safely and reliably</em> remains fragile.</p>
+            <p class="mt-3">This gap became evident through qualitatively different forms of model breakdown, including structural collapse in symbolic maps, hallucinated reasoning in sequence and emergency scenarios, violations of explicit movement constraints, and unsafe choices under goal-conflicting prompts. Some newer models also did not behave more safely than earlier ones under the same prompt, suggesting that gains in general capability do not automatically translate into more reliable safety prioritization. In their current form, foundation models are better viewed as <strong>assistive reasoning components</strong> than as <strong>autonomous decision makers</strong>.</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Takeaways -->
     <section class="section section-panel" id="takeaways">
       <div class="container is-max-desktop">
         <h2 class="title is-3 has-text-centered">Takeaways</h2>
         <div class="content">
           <ul class="takeaway-list">
-            <li><strong>Strong aggregate accuracy can hide catastrophic tail behavior</strong> in repeated deployments of robotic systems.</li>
-            <li><strong>Current models exhibit persistent failure modes</strong> including unstable spatial grounding, hallucinated reasoning, and constraint violations.</li>
-            <li><strong>Newer models are not always safer</strong> &mdash; safety-alignment drift can cause regressions in safety-critical behavior.</li>
-            <li><strong>Foundation models are not yet reliable enough</strong> for autonomous use in safety-critical robotic conditions without verification.</li>
-            <li><strong>Failure-focused evaluation is essential</strong> before deploying foundation models in safety-critical robotic systems.</li>
+            <li><strong>Six diagnostic tasks</strong> for fine-grained evaluation of navigation-related decision making under complete, incomplete, and safety-relevant information.</li>
+            <li><strong>Recurring failure modes identified</strong> in current LLMs and VLMs, including unstable spatial grounding, structural breakdown, hallucinated reasoning, constraint violations, and unsafe choices in emergency scenarios.</li>
+            <li><strong>Newer models are not always safer</strong> &mdash; Gemini-2.5 Flash underperformed its predecessor on emergency evacuation, suggesting safety-alignment drift.</li>
+            <li><strong>Strong performance does not guarantee reliable decision making</strong> &mdash; the key question is not only whether a model can solve a task, but whether it can support decisions that remain reliable when safety is at stake.</li>
+            <li><strong>Failure-centered evaluation is essential</strong> before foundation models are deployed in safety-critical robotic systems.</li>
           </ul>
         </div>
       </div>
     </section>
 
+    <!-- BibTeX -->
     <section class="section" id="bibtex">
       <div class="container is-max-desktop content">
         <div class="bib-head">
           <h2 class="title">BibTeX</h2>
           <button class="copy-btn" id="copyBibBtn" type="button">Copy</button>
         </div>
-<pre id="bibtexCode" tabindex="0" aria-label="BibTeX entry"><code>@article{han2025accuracy,
-  title={Accuracy Isn't Enough: Failure Analysis of Foundation Models in Robotic Decision Making},
+<pre id="bibtexCode" tabindex="0" aria-label="BibTeX entry"><code>@article{han2025beforewetrust,
+  title={Before We Trust Them: Decision-Making Failures in Navigation of Foundation Models},
   author={Han, Jua and Seo, Jaeyoon and Min, Jungbin and Choi, Sieun and Seo, Huichan and Kim, Jihie and Oh, Jean},
   year={2025},
-  note={Under review}
+  url={https://cmubig.github.io/before-we-trust-them/}
 }</code></pre>
       </div>
     </section>
@@ -452,10 +507,9 @@
   <footer class="footer">
     <div class="container">
       <div class="content has-text-centered">
-        <p>
-          This page follows an academic project-page structure.
-          All figures and results are from the AIFORD project materials.
-        </p>
+        <p>Before We Trust Them: Decision-Making Failures in Navigation of Foundation Models</p>
+        <p><a href="https://www.dgu.ac.kr/" target="_blank" rel="noopener">Dongguk University</a> &middot; <a href="https://www.skku.edu/" target="_blank" rel="noopener">Sungkyunkwan University</a> &middot; <a href="https://www.ri.cmu.edu/" target="_blank" rel="noopener">Carnegie Mellon University</a></p>
+        <p style="margin-top:0.6rem; font-size:0.85rem;"><a href="https://github.com/cmubig/before-we-trust-them" target="_blank" rel="noopener noreferrer">GitHub</a> &middot; <a href="#bibtex">Cite this work</a></p>
       </div>
     </div>
   </footer>

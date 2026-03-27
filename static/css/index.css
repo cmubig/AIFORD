@@ -44,6 +44,30 @@ a {
   color: inherit;
 }
 
+/* Accessibility: screen-reader only */
+.is-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Image stability */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+figure.image {
+  line-height: 0;
+}
+
 main {
   overflow: hidden;
 }
@@ -672,25 +696,24 @@ code {
   transform: scale(1.2);
 }
 
-/* Subtle scroll reveal */
+/* Subtle scroll reveal — items start visible and only animate
+   once JS has classified them as below the fold (.reveal-pending). */
 .reveal-item {
-  will-change: transform, opacity;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-item.reveal-pending {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
 }
 
 .reveal-item.reveal-visible {
-  animation: revealFade 0.52s ease both;
-  animation-delay: var(--reveal-delay, 0ms);
-}
-
-@keyframes revealFade {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @media (max-width: 1024px) {
